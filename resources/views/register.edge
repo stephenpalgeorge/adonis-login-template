@@ -1,0 +1,43 @@
+@layout('layouts/main')
+@set('metatitle', 'Create an account')
+
+@section('assets')
+<link rel="stylesheet" href="/styles/components/form-field.css">
+<script src="/scripts/register.js" defer></script>
+@end
+
+@section('body')
+<main>
+  <div>
+    <form id="sign-up-form">
+      @!component('components/form-field', {
+        id: 'username',
+        type: 'text',
+        name: 'username',
+        label: 'username:',
+        placeholder: 'your-cool-name',
+      })
+      
+      @!component('components/form-field', {
+        id: 'email-address',
+        type: 'email',
+        name: 'email',
+        label: 'email:',
+        placeholder: 'example@mail.com',
+      })
+      
+      @!component('components/form-field', {
+        id: 'password',
+        type: 'password',
+        name: 'password',
+        label: 'password:',
+      })
+
+      @!component('components/button', {
+        type: 'submit',
+        label: 'Sign up',
+      })
+    </form>
+  </div>
+</main>
+@end

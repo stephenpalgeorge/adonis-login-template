@@ -20,10 +20,13 @@
 
 import Route from '@ioc:Adonis/Core/Route';
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome');
-});
+Route.get('/', async ({ view }) => view.render('welcome'));
+Route.get('/login', async ({ view }) => view.render('login'));
+Route.get('/dashboard', async ({ view }) => view.render('dashboard'));
+Route.get('/welcome', async ({ view }) => view.render('user_welcome'));
+Route.get('/register', async ({ view }) => view.render('register'));
 
-Route.get('/login', async ({ view }) => {
-  return view.render('login');
-});
+Route.group(() => {
+  Route.post('register', 'AuthController.register');
+  Route.post('login', 'AuthController.login');
+}).prefix('api');
