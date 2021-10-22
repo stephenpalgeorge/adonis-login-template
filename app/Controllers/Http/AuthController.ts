@@ -9,7 +9,7 @@ export default class AuthController {
 
     try {
       await auth.use('web').attempt(username, password);
-      response.redirect('/dashboard');
+      return response.redirect().toPath('/dashboard');
     } catch (e) {
       console.error(e);
       return response.badRequest('Invalid credentials');
@@ -38,7 +38,7 @@ export default class AuthController {
       newUser.password = password;
       await newUser.save();
       await auth.use('web').attempt(username, password);
-      response.redirect('/welcome');
+      return response.redirect().status(303).toPath('/welcome');
     } catch (e) {
       console.error(e);
       return response.badRequest(e.messages);

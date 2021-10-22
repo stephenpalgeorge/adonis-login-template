@@ -20,13 +20,13 @@
 
 import Route from '@ioc:Adonis/Core/Route';
 
-Route.get('/', async ({ view }) => view.render('welcome'));
-Route.get('/login', async ({ view }) => view.render('login'));
-Route.get('/dashboard', async ({ view }) => view.render('dashboard'));
-Route.get('/welcome', async ({ view }) => view.render('user_welcome'));
-Route.get('/register', async ({ view }) => view.render('register'));
+Route.get('/', 'PagesController.home').as('pages.home');
+Route.get('/login', 'PagesController.login').as('pages.login');
+Route.get('/dashboard', 'PagesController.dashboard').as('pages.dashboard');
+Route.get('/welcome', 'PagesController.welcome').as('pages.welcome');
+Route.get('/register', 'PagesController.register').as('pages.register');
 
 Route.group(() => {
-  Route.post('register', 'AuthController.register');
-  Route.post('login', 'AuthController.login');
+  Route.post('register', 'AuthController.register').as('auth.register');
+  Route.post('login', 'AuthController.login').as('auth.login');
 }).prefix('api');

@@ -3,13 +3,12 @@
 
 @section('assets')
 <link rel="stylesheet" href="/styles/components/form-field.css">
-<script src="/scripts/register.js" defer></script>
 @end
 
 @section('body')
 <main>
   <div>
-    <form id="sign-up-form">
+    <form id="sign-up-form" action="{{ route('auth.register') }}" method="post">
       @!component('components/form-field', {
         id: 'username',
         type: 'text',
