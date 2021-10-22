@@ -1,4 +1,15 @@
-<div class="form-field">
+<div class="form-field {{ flashMessages.has(`errors.${name}`) ? 'error error--form-field' : '' }}">
   <label for="{{ id }}">{{ label }}</label>
   <input {{ $props.serializeExcept(['label']) }}>
+  
+  {{--  show the error messages  --}}
+  @if(flashMessages.has(`errors.${name}`))
+    {{--  the `get` method always returns an array, so we loop and display each message individually  --}}
+    @set('messages', flashMessages.get(`errors.${name}`))
+    @each(message in messages)
+      <span class="error error-message">
+        {{ message }}
+      </span>
+    @end
+  @end
 </div>

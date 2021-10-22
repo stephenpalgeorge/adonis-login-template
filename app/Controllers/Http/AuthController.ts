@@ -16,21 +16,40 @@ export default class AuthController {
     }
   }
 
-  public async register({ request, auth, response }: HttpContextContract) {
+  public async logout({ auth, response }: HttpContextContract) {
+    await auth.use('web').logout();
+    return response.redirect().toRoute('pages.login');
+  }
+
+  public async register({ request, auth, response, session }: HttpContextContract) {
     try {
       const newUserSchema = schema.create({
         email: schema.string({}, [rules.email()]),
         username: schema.string({ trim: true }, [
           rules.unique({ table: 'users', column: 'username' }),
         ]),
-        password: schema.string({ trim: true }),
+        password: schema.string({ trim: true }, [
+          rules.confirmed('passwordConfirm'),
+          rules.maxLength(32),
+          rules.minLength(8),
+          rules.regex(/(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/),
+        ]),
       });
 
-      await request.validate({ schema: newUserSchema });
-
-      const email = request.input("email");
-      const username = request.input("username");
-      const password = request.input("password");
+      const data = await request.validate({
+        schema: newUserSchema,
+        messages: {
+          'email.required': 'You must enter an email address',
+          'username.required': 'You must enter a username',
+          'username.unique': 'That name\'s taken...try another',
+          'password.required': 'You must enter a password',
+          'password.confirmed': 'Passwords didn\'t match...',
+          'password.maxLength': 'Password too long',
+          'password.minLength': 'Password too short',
+          'password.regex': 'Password too weak (no offence)',
+        }
+      });
+      const { email, username, password } = data;
       const newUser = new User();
 
       newUser.email = email;
@@ -41,7 +60,8 @@ export default class AuthController {
       return response.redirect().status(303).toPath('/welcome');
     } catch (e) {
       console.error(e);
-      return response.badRequest(e.messages);
+      session.flash('errors', e.messages);
+      return response.redirect().back();
     }
   }
 }

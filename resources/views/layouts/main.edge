@@ -9,6 +9,11 @@
   @!section('assets')
 </head>
 <body>
+  @if(auth.isLoggedIn)
+    <form action="{{ route('auth.logout') }}" method="post">
+      <button type="submit">Logout</button>
+    </form>
+  @end
   @!section('body')
 </body>
 </html>

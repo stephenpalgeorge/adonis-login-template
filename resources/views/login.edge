@@ -1,13 +1,39 @@
 @layout('layouts/main')
 @set('metatitle', 'Login')
 
+@section('assets')
+  <link rel="stylesheet" href="/styles/components/form-field.css">
+@end
+
 @section('body')
-<main>
-  <div>
-    <h1 class="title">Login Page</h1>
-    <ul>
-      <li><a href="/">Back to home</a></li>
-    </ul>
-  </div>
-</main>
+  <main>
+    <div>
+      <h1 class="title">Login</h1>
+      <ul>
+        <li><a href="/">Back to home</a></li>
+      </ul>
+
+      <form action="{{ route('auth.login') }}" method="post">
+        @!component('components/form-field', {
+          id: 'username',
+          type: 'text',
+          name: 'username',
+          label: 'Username:',
+          placeholder: 'what shall we call you?',
+        })
+
+        @!component('components/form-field', {
+          id: 'password',
+          type: 'password',
+          name: 'password',
+          label: 'Password:',
+        })
+
+        @!component('components/button', {
+          type: 'submit',
+          label: 'Log in',
+        })
+      </form>
+    </div>
+  </main>
 @end

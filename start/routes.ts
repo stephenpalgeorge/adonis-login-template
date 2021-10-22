@@ -22,11 +22,14 @@ import Route from '@ioc:Adonis/Core/Route';
 
 Route.get('/', 'PagesController.home').as('pages.home');
 Route.get('/login', 'PagesController.login').as('pages.login');
-Route.get('/dashboard', 'PagesController.dashboard').as('pages.dashboard');
-Route.get('/welcome', 'PagesController.welcome').as('pages.welcome');
 Route.get('/register', 'PagesController.register').as('pages.register');
+Route.group(() => {
+  Route.get('/dashboard', 'PagesController.dashboard').as('pages.dashboard');
+  Route.get('/welcome', 'PagesController.welcome').as('pages.welcome');
+}).middleware('auth:web');
 
 Route.group(() => {
   Route.post('register', 'AuthController.register').as('auth.register');
   Route.post('login', 'AuthController.login').as('auth.login');
+  Route.post('logout', 'AuthController.logout').as('auth.logout');
 }).prefix('api');
