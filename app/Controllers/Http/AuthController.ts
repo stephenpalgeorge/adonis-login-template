@@ -3,7 +3,7 @@ import { rules, schema } from '@ioc:Adonis/Core/Validator';
 import User from 'App/Models/User';
 
 export default class AuthController {
-  public async login({ request, auth, response }: HttpContextContract) {
+  public async login({ request, auth, response, session }: HttpContextContract) {
     const username = request.input("username");
     const password = request.input("password");
 
@@ -12,7 +12,11 @@ export default class AuthController {
       return response.redirect().toPath('/dashboard');
     } catch (e) {
       console.error(e);
-      return response.badRequest('Invalid credentials');
+      let message = e.message.split(':')[1].trim();
+      if (/user/i.test(message)) message = "No user found by that name...";
+      else if (/password/i.test(message)) message = "Wrong password...try again!";
+      session.flash('errors', message);
+      return response.redirect().back();
     }
   }
 

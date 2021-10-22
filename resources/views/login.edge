@@ -13,13 +13,16 @@
         <li><a href="/">Back to home</a></li>
       </ul>
 
+      @if(flashMessages.has('errors'))
+        <p class="error error--message">{{ flashMessages.get('errors') }}</p>
+      @end
       <form action="{{ route('auth.login') }}" method="post">
         @!component('components/form-field', {
           id: 'username',
           type: 'text',
           name: 'username',
           label: 'Username:',
-          placeholder: 'what shall we call you?',
+          placeholder: 'your-name',
         })
 
         @!component('components/form-field', {
