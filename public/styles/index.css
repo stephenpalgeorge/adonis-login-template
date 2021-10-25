@@ -1,31 +1,64 @@
+:root {
+  /* layout */
+  --scale-100: .512rem;
+  --scale-200: .64rem;
+  --scale-300: .8rem;
+  --scale-400: 1rem;
+  --scale-500: 1.25rem;
+  --scale-600: 1.563rem;
+  --scale-700: 1.953rem;
+  --scale-800: 2.441rem;
+  --scale-900: 3.052rem;
+
+  --container-width: 40rem;
+
+  /* colors */
+  --color--off-white: #F7F8FA;
+  --color--dark: #46444C;
+  --color--accent: #5A45FF;
+}
+
 html, body {
-  background-color: #F7F8FA;
+  background-color: var(--color--off-white);
   font-family: 'Poppins', sans-serif;
   height: 100vh;
-  color: #46444c;
+  color: var(--color--dark);
   position: relative;
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  color: #5A45FF;
-  text-decoration: none;
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-  max-width: 620px;
+  margin-bottom: auto;
+  padding-block: var(--scale-800);
+}
+
+main > div {
+  max-width: var(--container-width);
   margin: auto;
-  height: 100vh;
-  padding: 0 30px;
-  align-items: center;
+  padding: 0 var(--scale-700);
+  align-items: flex-start;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
-p {
-  margin-bottom: 20px;
+h1 { font-size: var(--scale-800); }
+h1 + * { margin-top: var(--scale-600); }
+
+h2, h3 { font-size: var(--scale-700); }
+h2 + *, h3 + * { margin-top: var(--scale-500); }
+
+a {
+  color: var(--color--accent);
+  text-decoration: none;
 }

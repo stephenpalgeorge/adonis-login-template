@@ -1,3 +1,22 @@
-.form-field {
-  border: 1px solid black;
+.form-field + .form-field {
+  margin-top: var(--scale-400);
+}
+
+.form-field > * {
+  width: 100%;
+}
+
+.form-field label {
+  display: block;
+  font-size: var(--scale-500);
+}
+
+.form-field input {
+  padding: var(--scale-100) var(--scale-200);
+  border: .125rem solid var(--color--dark);
+  font-size: var(--scale-500);
+}
+.form-field input:focus {
+  border: .125rem solid var(--color--accent);
+  outline: .125rem solid var(--color--accent);
 }
