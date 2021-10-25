@@ -1,13 +1,17 @@
 <header>
   <nav role="main">
     <ul>
-      <li><a href="/">Home</a></li>
-      @if(!auth.isLoggedIn)
-        <li><a href="/register">Sign up</a></li>
-        <li><a href="/login">Login</a></li>
+      @each(item in menus.main)
+        @if(
+          item.context === 'global' ||
+          item.context === 'unauth' && !auth.isLoggedIn ||
+          item.context === 'auth' && auth.isLoggedIn
+        )
+          @set('active', routeName(request) === item.route ? 'active' : '')
+          <li class="{{active}}"><a href="{{route(item.route)}}">{{item.label}}</a></li>
+        @end
       @end
       @if(auth.isLoggedIn)
-        <li><a href="/dashboard">Dashboard</a></li>
         <li>
           <form action="{{route('auth.logout')}}" method="post">
             <button type="submit">Logout</button>
