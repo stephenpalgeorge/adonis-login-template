@@ -1,5 +1,6 @@
 @layout('layouts/main')
-@set('metatitle', 'Create an account')
+@set('title', 'Create an account')
+@set('description', 'Sign up to create an account.')
 
 @section('assets')
   <link rel="stylesheet" href="/styles/components/form-field.css">
@@ -45,6 +46,12 @@
           label: 'Sign up',
         })
       </form>
+
+      @!component('components/form-links', {
+        links: [
+          { route: 'pages.login', label: 'Already have an account? Login.' }
+        ]
+      })
     </div>
   </main>
 @end

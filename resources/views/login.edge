@@ -1,5 +1,6 @@
 @layout('layouts/main')
-@set('metatitle', 'Login')
+@set('title', 'Login')
+@set('description', 'Enter your account credentials to gain access.')
 
 @section('assets')
   <link rel="stylesheet" href="/styles/components/form-field.css">
@@ -9,14 +10,12 @@
   <main>
     <div>
       <h1 class="title">Login</h1>
-      <ul>
-        <li><a href="/">Back to home</a></li>
-      </ul>
 
-      @if(flashMessages.has('errors'))
-        <p class="error error--message">{{ flashMessages.get('errors') }}</p>
-      @end
       <form action="{{ route('auth.login') }}" method="post">
+        @if(flashMessages.has('errors'))
+          <p class="error error--message">{{ flashMessages.get('errors') }}</p>
+        @end
+
         @!component('components/form-field', {
           id: 'username',
           type: 'text',
@@ -37,6 +36,13 @@
           label: 'Log in',
         })
       </form>
+
+      @!component('components/form-links', {
+        links: [
+          { route: 'pages.register', label: 'Need an account? Sign up.' },
+          { url: '/test', label: 'Forgotten your password? Click here.' },
+        ]
+      })
     </div>
   </main>
 @end

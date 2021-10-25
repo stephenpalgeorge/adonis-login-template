@@ -1,0 +1,9 @@
+<ul>
+  @each(link in links)
+    @if(link.route)
+      <li><a href="{{route(link.route)}}">{{link.label}}</a></li>
+    @else
+      <li><a href="{{link.url}}">{{link.label}}</a></li>
+    @end
+  @end
+</ul>

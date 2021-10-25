@@ -1,0 +1,19 @@
+<header>
+  <nav role="main">
+    <ul>
+      <li><a href="/">Home</a></li>
+      @if(!auth.isLoggedIn)
+        <li><a href="/register">Sign up</a></li>
+        <li><a href="/login">Login</a></li>
+      @end
+      @if(auth.isLoggedIn)
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li>
+          <form action="{{route('auth.logout')}}" method="post">
+            <button type="submit">Logout</button>
+          </form>
+        </li>
+      @end
+    </ul>
+  </nav>
+</header>
