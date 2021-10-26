@@ -2,17 +2,19 @@ button[type="submit"] {
   cursor: pointer;
   width: 100%;
   margin-top: var(--scale-600);
-  padding: var(--scale-300) var(--scale-400);
+  padding: var(--scale-400);
   font-size: var(--scale-400);
   text-transform: uppercase;
 
   background-color: var(--color--accent);
   border: none;
   color: var(--color--off-white);
+  transition: background-color var(--duration--base) ease-out;
 }
 
 button:hover {
   text-decoration: underline;
   text-underline-offset: .4em;
   text-decoration-thickness: .125rem;
+  background-color: var(--color--accent-dark);
 }
