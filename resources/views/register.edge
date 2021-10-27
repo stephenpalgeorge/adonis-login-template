@@ -1,5 +1,5 @@
 @layout('layouts/main')
-@set('title', 'Create an account')
+@set('title', 'Template - Create an account')
 @set('description', 'Sign up to create an account.')
 
 @section('assets')
@@ -47,6 +47,7 @@
         @!component('components/button', {
           type: 'submit',
           label: 'Sign up',
+          class: 'button-block button-accent',
         })
       </form>
 

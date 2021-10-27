@@ -16,8 +16,10 @@
   /* colors */
   --color--off-white: #F7F8FA;
   --color--dark: #46444C;
-  --color--accent: #5A45FF;
+  --color--accent: #5a45ff;
   --color--accent-dark: #2d12ff;
+  --color--highlight: #FF5A45;
+  --color--highlight-dark: #FF2D12;
   --color--error: #FF5A45;
 
   /* animations */
@@ -27,6 +29,11 @@
 
   /* shadows */
   --shadow-base: 0 0 .5rem .3rem rgba(0, 0, 0, .24);
+}
+
+::selection {
+  background-color: rgba(90, 69, 255, .8);
+  color: var(--color--off-white);
 }
 
 html, body {
@@ -57,7 +64,6 @@ main {
 main > div {
   max-width: var(--container-width);
   margin: auto;
-  padding: 0 var(--scale-700);
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -97,6 +103,10 @@ a:hover {
   text-decoration: underline;
   text-decoration-thickness: .125rem;
   text-underline-offset: .4em;
+}
+a:focus {
+  outline: none;
+  background-color: rgba(90, 69, 255, .08);
 }
 
 p {

@@ -1,5 +1,5 @@
 @layout('layouts/main')
-@set('title', 'Login')
+@set('title', 'Template - Login')
 @set('description', 'Enter your account credentials to gain access.')
 
 @section('assets')
@@ -12,7 +12,7 @@
 @section('body')
   <main>
     <div>
-      <h1 class="title">Login</h1>
+      <h1 class="title">Welcome back!</h1>
 
       <form action="{{ route('auth.login') }}" method="post">
         @if(flashMessages.has('errors'))
@@ -37,6 +37,7 @@
         @!component('components/button', {
           type: 'submit',
           label: 'Log in',
+          class: 'button-block button-accent',
         })
       </form>
 

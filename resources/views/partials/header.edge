@@ -1,23 +1,25 @@
 <header>
   <nav role="main">
-    <ul>
-      @each(item in menus.main)
-        @if(
-          item.context === 'global' ||
-          item.context === 'unauth' && !auth.isLoggedIn ||
-          item.context === 'auth' && auth.isLoggedIn
-        )
-          @set('active', routeName(request) === item.route ? 'active' : '')
-          <li class="{{active}}"><a href="{{route(item.route)}}">{{item.label}}</a></li>
+    <div>
+      <ul>
+        @each(item in menus.main)
+          @if(
+            item.context === 'global' ||
+            item.context === 'unauth' && !auth.isLoggedIn ||
+            item.context === 'auth' && auth.isLoggedIn
+          )
+            @set('active', routeName(request) === item.route ? 'active' : '')
+            <li class="{{active}}"><a href="{{route(item.route)}}">{{item.label}}</a></li>
+          @end
         @end
-      @end
-      @if(auth.isLoggedIn)
-        <li>
-          <form action="{{route('auth.logout')}}" method="post">
-            <button type="submit">Logout</button>
-          </form>
-        </li>
-      @end
-    </ul>
+        @if(auth.isLoggedIn)
+          <li>
+            <form action="{{route('auth.logout')}}" method="post">
+              <button type="submit">Logout</button>
+            </form>
+          </li>
+        @end
+      </ul>
+    </div>
   </nav>
 </header>

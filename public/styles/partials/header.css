@@ -9,10 +9,16 @@ header nav {
   width: 100%;
   height: var(--nav-height);
   background-color: var(--color--accent);
+  box-shadow: var(--shadow-base);
+}
+
+header nav div {
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
-  box-shadow: var(--shadow-base);
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
 }
 
 header nav ul {
@@ -29,6 +35,10 @@ header nav li {
 }
 header nav li:hover {
   background-color: var(--color--accent-dark);
+}
+header nav li a:focus {
+  background-color: var(--color--accent-dark);
+  outline: none;
 }
 
 header nav a {
