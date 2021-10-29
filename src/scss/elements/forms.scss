@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '../variables' as var;
+
+form {
+  width: 100%;
+
+  .error--message {
+    padding: map.get(var.$scale, 100) map.get(var.$scale, 200);
+    margin-bottom: map.get(var.$scale, 300);
+    color: map.get(var.$colors, error);
+    background-color: rgba(map.get(var.$colors, error), .05);
+    border: 1px solid map.get(var.$colors, error);
+  }
+}

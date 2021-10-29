@@ -1,0 +1,93 @@
+@use 'sass:map';
+@use './variables' as var;
+@use './mixins' as mx;
+
+::selection {
+  background-color: rgba(90, 69, 255, .8);
+  color: map.get(var.$colors, off-white);
+}
+
+html, body {
+  background-color: map.get(var.$colors, off-white);
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  color: map.get(var.$colors, dark);
+  position: relative;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin-top: var.$nav-height;
+  margin-bottom: auto;
+  padding-block: map.get(var.$scale, 900);
+
+  > div {
+    max-width: var.$container-width;
+    margin: auto;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+
+h1 {
+  position: relative;
+  max-width: 25ch;
+  font-size: map.get(var.$scale, 800);
+  
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .25em;
+    background-color: map.get(var.$colors, accent);
+    opacity: .5;
+    transform: rotate(-2deg);
+  }
+
+  + * {
+    margin-top: map.get(var.$scale, 600);
+  }
+}
+
+h2, h3 {
+  max-width: 40ch;
+  font-size: map.get(var.$scale, 700);
+  
+  + * {
+    margin-top: map.get(var.$scale, 500);
+  }
+}
+
+
+a {
+  color: map.get(var.$colors, accent);
+  text-decoration: none;
+
+  &:hover {
+    @include mx.underline;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: rgba(var.$color-blue, .08);
+  }
+}
+
+p {
+  line-height: 1.8;
+}

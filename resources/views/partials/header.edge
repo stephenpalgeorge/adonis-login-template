@@ -1,5 +1,7 @@
+@set('navClass', routeName(request) === 'pages.home' ? 'transparent' : '')
+
 <header>
-  <nav role="main">
+  <nav role="main" class="{{navClass}}">
     <div>
       <ul>
         @each(item in menus.main)

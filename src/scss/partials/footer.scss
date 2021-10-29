@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '../variables' as var;
+
+footer {
+  width: 100%;
+  padding: map.get(var.$scale, 900);
+  background-color: map.get(var.$colors, dark);
+  color: map.get(var.$colors, off-white);
+  font-size: .8em;
+
+  > div {
+    max-width: var.$container-width;
+    margin: 0 auto;
+  }
+
+  * {
+    color: inherit;
+    font-size: inherit;
+  }
+}
+

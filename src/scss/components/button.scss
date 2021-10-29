@@ -1,0 +1,48 @@
+@use 'sass:map';
+@use '../variables' as var;
+@use '../mixins' as mx;
+
+button {
+  cursor: pointer;
+  margin-top: map.get(var.$scale, 600);
+  padding: map.get(var.$scale, 400);
+  font-size: map.get(var.$scale, 400);
+  font-weight: 900;
+  text-transform: uppercase;
+
+  border: none;
+  color: map.get(var.$colors, off-white);
+  transition: background-color var.$duration-base ease-out;
+ 
+  &:hover {
+    @include mx.underline;
+  }
+}
+
+
+.button{
+  &-block {
+    width: 100%;
+  }
+
+  &-accent {
+    background-color: map.get(var.$colors, accent);
+    border: .125rem solid darken(map.get(var.$colors, accent), 10%);
+    &:hover { background-color: darken(map.get(var.$colors, accent), 10%); }
+    &:focus {
+      outline: .125rem solid darken(map.get(var.$colors, accent), 10%);
+      background-color: darken(map.get(var.$colors, accent), 10%);
+    }
+  }
+
+  &-highlight {
+    background-color: map.get(var.$colors, highlight);
+    border: .125rem solid darken(map.get(var.$colors, highlight), 10%);
+    &:hover { background-color: darken(map.get(var.$colors, highlight), 10%); }
+    &:focus {
+      outline: .125rem solid darken(map.get(var.$colors, highlight), 10%);
+      background-color: darken(map.get(var.$colors, highlight), 10%);
+    }
+  }
+}
+

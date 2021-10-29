@@ -1,0 +1,52 @@
+/* layout */
+$scale-100: .512rem;
+$scale-200: .64rem;
+$scale-300: .8rem;
+$scale-400: 1rem;
+$scale-500: 1.25rem;
+$scale-600: 1.563rem;
+$scale-700: 1.953rem;
+$scale-800: 2.441rem;
+$scale-900: 3.052rem;
+
+$scale: (
+  100: $scale-100,
+  200: $scale-200,
+  300: $scale-300,
+  400: $scale-400,
+  500: $scale-500,
+  600: $scale-600,
+  700: $scale-700,
+  800: $scale-800,
+  900: $scale-900,
+);
+
+$container-width: 40rem;
+$nav-height: 4rem;
+
+/* colors */
+$color-blue: #5a45ff;
+$color-red: #FF5A45;
+$color-off-white: #F7F8FA;
+$color-dark: #46444C;
+$color-accent: $color-blue;
+$color-accent-dark: #2d12ff;
+$color-highlight: $color-red;
+$color-highlight-dark: #FF2D12;
+$color-error: $color-red;
+
+$colors: (
+  off-white: $color-off-white,
+  dark: $color-dark,
+  accent: $color-accent,
+  highlight: $color-highlight,
+  error: $color-red,
+);
+
+/* animations */
+$duration-base: .15s;
+$duration-slow: .3s;
+$duration-fast: .1s;
+
+/* shadows */
+$shadow-base: 0 0 .5rem .3rem rgba(0, 0, 0, .24);

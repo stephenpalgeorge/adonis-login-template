@@ -1,0 +1,36 @@
+@use 'sass:map';
+@use '../variables' as var;
+
+.form-field {
+  & + & {
+    margin-top: map.get(var.$scale, 400);
+  }
+
+  > * {
+    width: 100%;
+  }
+  
+  label {
+    display: block;
+    font-size: map.get(var.$scale, 500);
+  }
+
+  input {
+    padding: map.get(var.$scale, 100) map.get(var.$scale, 200);
+    border: .125rem solid map.get(var.$colors, dark);
+    font-size: map.get(var.$scale, 500);
+ 
+    &:focus {
+      border: .125rem solid map.get(var.$colors, accent);
+      outline: .125rem solid map.get(var.$colors, accent);
+    }
+  }
+}
+
+.error--form-field input {
+  border-color: map.get(var.$colors, error);
+}
+
+span.error-message {
+  color:  map.get(var.$colors, error);
+}
