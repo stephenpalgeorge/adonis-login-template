@@ -1,0 +1,1 @@
+console.log('demo js module being included on the home page...');
