@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "node ace serve --watch",
-    "build": "npm run style && node ace build --production",
+    "build": "npm run src:build && node ace build --production",
     "start": "node server.js",
     "styles": "rm -rf public/css && sass --no-source-map --style=compressed src/scss:public/css",
-    "dev:styles": "sass --watch --no-source-map src/scss:public/css",
+    "styles:dev": "sass --watch --no-source-map src/scss:public/css",
     "scripts": "rm -rf public/js && npx rollup --config",
-    "dev:scripts": "npx rollup --config --watch",
+    "scripts:dev": "npx rollup --config --watch",
     "src:build": "npm run styles && npm run scripts",
-    "src:dev": "npm run dev:styles & npm run dev:scripts"
+    "src:dev": "npm run styles:dev & npm run scripts:dev"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.3.7",
